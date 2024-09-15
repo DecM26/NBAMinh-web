@@ -1,41 +1,81 @@
-<!DOCTYPE html>
-<html lang="vi">
+<html></html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBAMinh aka DecM26</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+  <style>
+* {
+    cursor: none
+}
+body {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+.loading {
+    background-color: #FFF;
+    display: fixed
+}
+.loading img {
+    display: block;
+    min-height: 209px;
+    min-width: 200px;
+}
+.mouse {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: #fff782;
+    position: absolute;
+    animation: mouseAnimation .5s infinite ease-in-out alternate;
+    left: 0;
+    top: 0
+}
+@keyframes mouseAnimation {
+    from {
+        width: 25px;
+        height: 25px
+    }
+    to {
+        width: 15px;
+        height: 15px
+    }   
+}
+  </style>
+  </head>
 <body>
-    <header>
-        <h1>Nguyễn Bá Anh Minh</h1>
-        <p>CNTT_I K48</p>
-    </header>
-    
-    <section id="about">
-        <h2>Giới Thiệu Bản Thân</h2>
-        <ul>
-            <li>Mình tên là Nguyễn Bá Anh Minh, mình sinh ra và lớn lên tại Thành phố Huế, Tỉnh Thừa Thiên Huế</li>
-            <li>Là sinh viên năm nhất ngành công nghệ thông tin lớp CNTT_I K48 của Trường Đại Học Khoa Học - Đại Học Huế</li>
-            <li>Sinh ngày 22/12/2006</li>
-            <li>Sở thích: Nghe nhạc, đọc truyện, xem phim, chơi game,...</li>
-            <li>Hầu như mọi tài khoản game, app, mxh của mình đều là tên thật của mình hoặc là DecM26 hoặc NBAMinh</li>
-        </ul>
-    </section>
-
-    <section id="projects">
-        <h2>Các Thông Tin</h2>
-        <ul>
-            <li>web 1:</li>
-            <li>web 2: <a href="https://decm26.github.io/BThosting/Bt.html">Máy Tính Cơ Bản</a></li>
-            <li>github: <a href="https://github.com/DecM26">https://github.com/DecM26</a></li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Liên Hệ</h2>
-        <p>Email: anhmnguyenba3@gmail.com</p>
-        <p><a href="https://www.facebook.com/profile.php?id=61554660323772">Facebook</a></p>
-    </section>
+  <div class="loading">
+    <img src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+  </div>
+  <div class="mouse original"></div>
+  <script>
+          $(".loading").height($(window).height());
+$(".loading").width($(window).width()); 
+$(".loading img").css({
+    paddingTop: ($(".loading").height() - $(".loading img").height()) / 2,
+    paddingLeft: ($(".loading").width() - $(".loading img").width()) / 2
+});
+$(window).resize(function () {
+    "use strict";
+    $(".loading").height($(window).height());
+    $(".loading").width($(window).width());
+    $(".loading img").css({
+        paddingTop: ($(".loading").height() - $(".loading img").height()) / 2,
+        paddingLeft: ($(".loading").width() - $(".loading img").width()) / 2
+    }); 
+});
+$(window).mousemove(function (e) {
+    "use strict";
+    $(".original").css({
+        left: e.pageX - 16,
+        top: e.pageY - 16
+    }); 
+});
+$("body").on("click", function (e) {
+    "use strict";
+    $(".original").clone(true).appendTo("body").css({
+        left: e.pageX - 16,
+        top: e.pageY - 16
+    }).removeClass("original"); 
+});
+        </script>
 </body>
 </html>
